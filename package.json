@@ -1,0 +1,38 @@
+{
+  "name": "my-vue-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev:uat": "vite --mode localUat",
+    "dev:rpdt": "vite --mode localRpdt",
+    "dev:pdt": "vite --mode localPdt",
+    "build:uat": "vite build --mode uat",
+    "build:rpdt": "vite build --mode rpdt",
+    "build:pdt": "vite build --mode pdt",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dsbridge": "^3.1.4",
+    "lodash": "^4.17.21",
+    "qs": "^6.10.1",
+    "vant": "^3.2.7",
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-vue": "^8.0.3",
+    "postcss-px-to-viewport": "^1.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.43.4",
+    "vite": "^2.6.4",
+    "vite-plugin-components": "^0.13.3",
+    "vite-plugin-imagemin": "^0.4.6",
+    "vite-plugin-style-import": "^1.2.1"
+  }
+}
