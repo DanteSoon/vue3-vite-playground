@@ -4,6 +4,9 @@
   <van-button square class="mybtn" type="primary" @click="changeCount"
     >点击</van-button
   >
+  <van-button square class="mybtn" type="primary" @click="clickToGridBtn"
+    >GRID DEMO</van-button
+  >
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
@@ -11,8 +14,12 @@
 import {
   reactive, computed, onBeforeMount, onMounted, getCurrentInstance, inject,
 } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { getTest, postTest } from '@/apis/test/index'
+
+// const route = useRoute()
+const router = useRouter()
 
 console.log(8888, import.meta.env.VITE_API_URL) // 获取.env文件里面的全局变量  全局变量必须以vite_开头
 const store = useStore()
@@ -49,6 +56,9 @@ onMounted(async() => {
 })
 const changeCount = () => {
   store.commit('testModule/increment') // 调用mutations
+}
+const clickToGridBtn = () => {
+  router.push({ name: 'gridIndex' })
 }
 </script>
 <style scoped lang='scss'>

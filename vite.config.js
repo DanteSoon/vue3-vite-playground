@@ -6,7 +6,10 @@ import { defineConfig, loadEnv } from 'vite'
 // import viteImagemin from "vite-plugin-imagemin";
 import { resolve } from 'path'
 // 引入环境变量需要loadEnv
-const autoprefixer = require('autoprefixer')
+// const autoprefixer = require('autoprefixer')
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default ({ mode }) => {
   const nodeEnv = loadEnv(mode, process.cwd()).VITE_NODE_ENV
@@ -59,6 +62,12 @@ export default ({ mode }) => {
         ],
       }),
       ViteComponents(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
     ],
     base: loadEnv(mode, process.cwd()).VITE_CDN_URL, // 访问公共资源的位置 相对服务器和nginx访问路径
     resolve: {
@@ -94,26 +103,26 @@ export default ({ mode }) => {
         },
       },
     },
-    css: {
-      postcss: {
-        plugins: [
-          autoprefixer(),
-          require('postcss-px-to-viewport')({
-            unitToConvert: 'px', // 要转换的（字符串）单位，默认为px
-            viewportWidth: 375, // （数字） 视口的宽度
-            unitPrecision: 3, // （数字）保留的小数位数
-            propList: ['*'], // 使用通配符*启用所有属性
-            viewportUnit: 'vw', // （字符串） 预期单位
-            fontViewportUnit: 'vw', // （字符串） 字体预期单位
-            selectorBlackList: [], // （数组）要忽略的选择器，保留为px 如果value是字符串，它将检查选择器是否包含字符串。 ['body'] 将匹配.body - class 如果value是regexp，它将检查选择器是否匹配regexp。[/^body$/] 将匹配body但不匹配.body
-            minPixelValue: 1, // （数字）设置要替换的最小像素值
-            mediaQuery: false, // （布尔值）允许在媒体查询中转换px
-            replace: true, // 转换后是否添加备用单位
-            // exclude: /(\/|\\)(node_modules)(\/|\\)/  // （数组或正则表达式）忽略某些文件，例如“ node_modules”
-          }),
-        ],
-      },
-    },
+    // css: {
+    //   postcss: {
+    //     plugins: [
+    //       autoprefixer(),
+    //       require('postcss-px-to-viewport')({
+    //         unitToConvert: 'px', // 要转换的（字符串）单位，默认为px
+    //         viewportWidth: 375, // （数字） 视口的宽度
+    //         unitPrecision: 3, // （数字）保留的小数位数
+    //         propList: ['*'], // 使用通配符*启用所有属性
+    //         viewportUnit: 'vw', // （字符串） 预期单位
+    //         fontViewportUnit: 'vw', // （字符串） 字体预期单位
+    //         selectorBlackList: [], // （数组）要忽略的选择器，保留为px 如果value是字符串，它将检查选择器是否包含字符串。 ['body'] 将匹配.body - class 如果value是regexp，它将检查选择器是否匹配regexp。[/^body$/] 将匹配body但不匹配.body
+    //         minPixelValue: 1, // （数字）设置要替换的最小像素值
+    //         mediaQuery: false, // （布尔值）允许在媒体查询中转换px
+    //         replace: true, // 转换后是否添加备用单位
+    //         // exclude: /(\/|\\)(node_modules)(\/|\\)/  // （数组或正则表达式）忽略某些文件，例如“ node_modules”
+    //       }),
+    //     ],
+    //   },
+    // },
     server: {
       host: '0.0.0.0', // 0.0.0.0是localhost和本地ip都可以启动
       port: 8081,
