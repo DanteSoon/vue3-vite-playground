@@ -8,8 +8,20 @@
       </div>
     </div>
     <div class="btn-area">
-      <el-button>增加元素</el-button>
-      <el-button>减少元素</el-button>
+      <el-button @click="addItem">增加元素</el-button>
+      <el-button @click="removeItem">减少元素</el-button>
+      <div class="label-input">
+        <span class="ml-3 w-35 text-gray-600 inline-flex items-center"
+          >行</span
+        >
+        <el-input v-model="data.rowNum"></el-input>
+      </div>
+      <div class="label-input">
+        <span class="ml-3 w-35 text-gray-600 inline-flex items-center"
+          >列</span
+        >
+        <el-input v-model="data.colNum"></el-input>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +32,8 @@ import {
 } from 'vue'
 
 const data = reactive({
+  rowNum: 0,
+  colNum: 0,
   testList: [{
     value: 1,
   }, {
@@ -37,6 +51,14 @@ onBeforeMount(async() => {
 onMounted(async() => {
 
 })
+const addItem = () => {
+  data.testList.push({
+    value: data.testList.length + 1,
+  })
+}
+const removeItem = () => {
+  data.testList.pop()
+}
 </script>
 
 <style scoped lang='scss'>
