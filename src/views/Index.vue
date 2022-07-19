@@ -7,6 +7,12 @@
   <van-button square class="mybtn" type="primary" @click="clickToGridBtn"
     >GRID DEMO</van-button
   >
+  <van-button square class="mybtn" type="primary" @click="clickToBmsBtn"
+    >BMS</van-button
+  >
+  <van-button square class="mybtn" type="primary" @click="clickToLiveRegulationBtn"
+    >监管</van-button
+  >
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
@@ -18,7 +24,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { getTest, postTest } from '@/apis/test/index'
 
-// const route = useRoute()
+const route = useRoute()
 const router = useRouter()
 
 console.log(8888, import.meta.env.VITE_API_URL) // 获取.env文件里面的全局变量  全局变量必须以vite_开头
@@ -59,6 +65,12 @@ const changeCount = () => {
 }
 const clickToGridBtn = () => {
   router.push({ name: 'gridIndex' })
+}
+const clickToBmsBtn = () => {
+  router.push({ name: 'bms-page' })
+}
+const clickToLiveRegulationBtn = () => {
+  router.push({ name: 'live-regulation-page' })
 }
 </script>
 <style scoped lang='scss'>

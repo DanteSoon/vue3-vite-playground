@@ -5,6 +5,9 @@ import Router from '@/router/index'
 import store from '@/vuex/index'
 import $http from '@/axios/index'
 import '@/assets/styles/index.scss'
+import microApp from '@micro-zoe/micro-app'
+
+microApp.start()
 
 window.projectAxios = $http
 
