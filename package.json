@@ -31,6 +31,7 @@
     "eslint-plugin-vue": "^8.0.3",
     "postcss-px-to-viewport": "^1.1.1",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.7.1",
     "sass": "^1.43.4",
     "vite": "^2.6.4",
     "vite-plugin-components": "^0.13.3",

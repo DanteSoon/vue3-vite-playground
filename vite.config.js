@@ -5,6 +5,7 @@ import ViteComponents from 'vite-plugin-components'
 import { defineConfig, loadEnv } from 'vite'
 // import viteImagemin from "vite-plugin-imagemin";
 import { resolve } from 'path'
+import { visualizer } from 'rollup-plugin-visualizer'
 // 引入环境变量需要loadEnv
 const autoprefixer = require('autoprefixer')
 
@@ -59,6 +60,10 @@ export default ({ mode }) => {
         ],
       }),
       ViteComponents(),
+      visualizer({
+        template: 'treemap',
+        gzipSize: true,
+      }),
     ],
     base: loadEnv(mode, process.cwd()).VITE_CDN_URL, // 访问公共资源的位置 相对服务器和nginx访问路径
     resolve: {
